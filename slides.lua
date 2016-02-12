@@ -145,12 +145,12 @@ function draw()
         elseif v.type == "image" then
             gfx.setColor(black)
             for i = 1, num_drops do
-                gfx.drawq(v.image, v.quad, v.x + i, v.y + i, 0, 
+                gfx.draw(v.image, v.quad, v.x + i, v.y + i, 0, 
                           v.image:getWidth(), v.image:getHeight())                
             end
 
             gfx.setColor(white)
-            gfx.drawq(v.image, v.quad, v.x, v.y, 0, 
+            gfx.draw(v.image, v.quad, v.x, v.y, 0, 
                       v.image:getWidth(), v.image:getHeight())
         end
     end

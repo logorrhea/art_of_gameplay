@@ -44,7 +44,7 @@ end
 function love.draw()
     -- draw sky
     gfx.setColor(white)
-    gfx.drawq(images.sky, quads.sky, 0, 0, 0, gfx.getWidth(), gfx.getHeight())
+    gfx.draw(images.sky, quads.sky, 0, 0, 0, gfx.getWidth(), gfx.getHeight())
 
     -- draw slides
     slides.draw(slide_index)

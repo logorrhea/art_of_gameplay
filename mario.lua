@@ -41,15 +41,15 @@ function enter()
         tune.air_steer = true
         tune.variable_jump = true
     end
-        
+
 end
 
 function exit()
-    
+
 end
 
 function update(dt)
-
+--[[
     local stick_x, stick_y = joy.getAxes(0)
 
     -- dead spot
@@ -132,15 +132,16 @@ function update(dt)
     if mario.state == "air" and mario.vy > 0 then
         mario.air_phase = 3
     end
+--]]
 end
 
 function draw()
     gfx.push()
-    
+
     gfx.scale(50, 50)
 
     for i, v in ipairs(ground_blocks) do
-        gfx.drawq(tile_ground, quad, v.x, v.y, 0, 1, 1)
+        gfx.draw(tile_ground, quad, v.x, v.y, 0, 1, 1)
     end
 
     -- draw mario
@@ -151,9 +152,9 @@ function draw()
     end
 
     if mario.right then
-        gfx.drawq(mario_idle, quad, mario.x, mario.y, 0, 1, 1)
+        gfx.draw(mario_idle, quad, mario.x, mario.y, 0, 1, 1)
     else
-        gfx.drawq(mario_idle, quad, mario.x + 1, mario.y, 0, -1, 1)
+        gfx.draw(mario_idle, quad, mario.x + 1, mario.y, 0, -1, 1)
     end
 
     gfx.pop()

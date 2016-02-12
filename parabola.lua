@@ -1,10 +1,14 @@
 local gfx = love.graphics
-local joy = love.joystick
+local joy = nil
+for _, stick in pairs(love.joystick.getJoysticks()) do
+  joy = stick
+  break
+end
 
 module("parabola", package.seeall)
 
 local function graph(func, time, width, height)
-    
+
     -- draw x-axis
     gfx.setColor(black)
     gfx.line(0, 0, width, 0)
@@ -33,7 +37,8 @@ function exit()
 end
 
 function update(dt)
-    local x, y = joy.getAxes(0)
+  --[[
+    local x, y = joy:getAxes(0)
 
     if x and y then
         -- dead spot
@@ -53,17 +58,19 @@ function update(dt)
 
     v0_x = v0_x + sv_x * x * dt
     v0_y = v0_y + sv_y * y * dt
+--]]
 end
 
 function draw()
     gfx.push()
-    
+
     -- set things up with the origin at 0, 0
     gfx.translate(0, gfx.getHeight())
     gfx.scale(1, -1)
     gfx.translate(100, 100)
 
-    gfx.setLine(5, "smooth")
+    gfx.setLineWidth(5)
+    gfx.setLineStyle("smooth")
 
     -- joypad control over this!
 
